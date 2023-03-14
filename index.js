@@ -9,7 +9,6 @@ const {connectDB} = require('./database/connect');
 const {router} = require('./routes/route');
 const {not_found} = require('./middleware/not-found');
 const {errorHandler} = require('./middleware/error_handler');
-const morgan = require('morgan');
 
 app.use(express.json());
 app.use('/api/v1/tasks', router);
@@ -18,7 +17,6 @@ app.get('/welcome', (req, res) => {
     res.status(200).send("Task Manager");
 });
 
-app.use(morgan('tiny'));
 app.use(not_found);
 app.use(errorHandler);
 
